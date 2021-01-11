@@ -1,0 +1,6 @@
+{
+  "MONGO_URI": "mongodb+srv://kunalbatra0107:Thorisgr8@cluster0.sbnsv.mongodb.net/<dbname>?retryWrites=true&w=majority",
+  "JWT_SECRET": "jwtSecret",
+  "GITHUB_CLIENT_ID": "d8462c99047e98e50357",
+  "GITHUB_CLIENT_SECRET": "ae09aead7cc00112c87626b60e8b453e8ba2ec7b"
+}

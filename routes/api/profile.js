@@ -73,6 +73,7 @@ router.post(
     if (githubusername) profileFields.githubusername = githubusername;
 
     if (skills) {
+      console.log(skills);
       profileFields.skills = skills.split(',').map((skill) => skill.trim());
     }
 
@@ -303,7 +304,7 @@ router.put(
   }
 );
 
-// @route DELETE api/profile/experience/:edId
+// @route DELETE api/profile/education/:edId
 // @desc  delete an education
 // @access Private
 

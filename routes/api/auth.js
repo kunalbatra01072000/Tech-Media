@@ -13,10 +13,10 @@ const config = require('config');
 router.get('/', auth, async (req, res) => {
   try {
     const user = await User.findById(req.user.id).select('-password');
-    res.json(user);
+    return res.json(user);
   } catch (err) {
     console.error(err);
-    res.status(500).json({
+    return res.status(500).json({
       errors: [{ msg: 'Server error' }],
     });
   }
