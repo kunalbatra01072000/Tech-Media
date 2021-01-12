@@ -6,6 +6,7 @@ import {
   GET_POSTS,
   POST_ERROR,
   REMOVE_COMMENT,
+  SET_LOADING,
   UPDATE_LIKES,
 } from '../types';
 
@@ -17,11 +18,17 @@ const initialState = {
 };
 const Post = function (state = initialState, { type, payload }) {
   switch (type) {
+    case SET_LOADING:
+      return {
+        ...state,
+        loading: true,
+      };
     case GET_POSTS:
       return {
         ...state,
         posts: payload,
         loading: false,
+        post: null,
       };
     case POST_ERROR:
       return {

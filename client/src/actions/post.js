@@ -8,6 +8,7 @@ import {
   GET_POST,
   ADD_COMMENT,
   REMOVE_COMMENT,
+  SET_LOADING,
 } from '../types';
 import { setAlert } from './alert';
 
@@ -33,6 +34,9 @@ export const getPosts = () => async (dispatch) => {
 export const getPost = (id) => async (dispatch) => {
   try {
     const res = await axios.get(`/api/posts/${id}`);
+    dispatch({
+      type: SET_LOADING,
+    });
     dispatch({
       payload: res.data,
       type: GET_POST,

@@ -5,6 +5,7 @@ import {
   UPDATE_PROFILE,
   GET_PROFILES,
   GET_REPOS,
+  SET_LOADING,
 } from '../types';
 
 const initialState = {
@@ -17,6 +18,11 @@ const initialState = {
 
 function Profile(state = initialState, { type, payload }) {
   switch (type) {
+    case SET_LOADING:
+      return {
+        ...state,
+        loading: true,
+      };
     case GET_PROFILE:
     case UPDATE_PROFILE:
       return {
@@ -51,6 +57,7 @@ function Profile(state = initialState, { type, payload }) {
         profile: null,
         repos: [],
         loading: false,
+        error: {},
       };
 
     default:

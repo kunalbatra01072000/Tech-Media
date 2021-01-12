@@ -8,11 +8,20 @@ import { Link } from 'react-router-dom';
 import CommentForm from './CommentForm';
 import CommentItem from './CommentItem';
 
-const Post = ({ getPost, post: { post, loading }, match }) => {
+const Post = ({ getPost, post: { post, loading, error }, match }) => {
   useEffect(() => {
     getPost(match.params.id);
   }, [getPost, match.params.id]);
-  return loading || post === null ? (
+  return loading ? (
+    <Spinner />
+  ) : error.msg ? (
+    <Fragment>
+      <h1 className='x-large text-primary'>
+        <i className='fas fa-exclamation-triangle'></i> Post Not Found
+      </h1>
+      <p className='large'>The Post does not exists (404)</p>
+    </Fragment>
+  ) : post === null ? (
     <Spinner />
   ) : (
     <Fragment>

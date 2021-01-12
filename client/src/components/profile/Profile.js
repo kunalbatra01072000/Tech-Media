@@ -14,7 +14,7 @@ const Profile = ({
   match,
   getUserProfile,
   auth,
-  profile: { profile, loading },
+  profile: { profile, loading, error },
 }) => {
   useEffect(() => {
     getUserProfile(match.params.id);
@@ -22,7 +22,16 @@ const Profile = ({
 
   return (
     <Fragment>
-      {profile === null || loading ? (
+      {loading ? (
+        <Spinner />
+      ) : error.msg ? (
+        <Fragment>
+          <h1 className='x-large text-primary'>
+            <i className='fas fa-exclamation-triangle'></i> Profile Not Found
+          </h1>
+          <p className='large'>The Profile does not exists (404)</p>
+        </Fragment>
+      ) : profile === null ? (
         <Spinner />
       ) : (
         <Fragment>

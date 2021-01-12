@@ -8,14 +8,13 @@ import {
   CLEAR_PROFILE,
   GET_PROFILES,
   GET_REPOS,
+  SET_LOADING,
 } from '../types';
 
 export const getCurrentProfile = () => async (dispatch) => {
   try {
     const res = await axios.get('/api/profile/me');
-    if (res.data.skills) {
-      res.data.skills = res.data.skills.toString();
-    }
+
     dispatch({
       type: GET_PROFILE,
       payload: res.data,
@@ -59,6 +58,9 @@ export const getProfiles = () => async (dispatch) => {
 
 export const getUserProfile = (userId) => async (dispatch) => {
   try {
+    dispatch({
+      type: SET_LOADING,
+    });
     const res = await axios.get(`/api/profile/${userId}`);
 
     dispatch({

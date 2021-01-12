@@ -73,7 +73,6 @@ router.post(
     if (githubusername) profileFields.githubusername = githubusername;
 
     if (skills) {
-      console.log(skills);
       profileFields.skills = skills.split(',').map((skill) => skill.trim());
     }
 
@@ -140,7 +139,7 @@ router.get('/:userId', async (req, res) => {
     }
     res.json(profile);
   } catch (err) {
-    console.error(err.message);
+    // console.error(err.message);
     if (err.kind === 'ObjectId') {
       return res.status(400).json({
         errors: [{ msg: 'No such user exists' }],
